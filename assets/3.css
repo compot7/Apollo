@@ -1,0 +1,226 @@
+/* ==========================================================================
+   3.css — сцена страницы 3 (Ниоба: поиск и сбор белых хитонов).
+   ТОЛЬКО позиции/размеры/z-index слоёв сцены (в % от размеров #scene).
+   Базовые стили берутся из main.css.
+   ========================================================================== */
+
+/* --- Текстовая колонка (плавный аппаратный скролл) --- */
+#content {
+  position: relative;
+  /* Терракотовая подложка строго под левой полосой шириной 36px */
+  background: linear-gradient(
+    to right,
+    #d15200 0,
+    #d15200 36px,
+    #ffffff 36px,
+    #ffffff 100%
+  );
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.4s ease;
+}
+
+/* Статичная левая косичка */
+#border-braid-left {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 36px;
+  height: 100%;
+  object-fit: cover;
+  z-index: 10;
+  pointer-events: none;
+}
+
+#textbox {
+  padding-left: 56px;
+  padding-right: 32px;
+}
+
+/* Прозрачный скроллбар с авто-появлением */
+#content::-webkit-scrollbar {
+  width: 6px;
+}
+
+#content::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+#content::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 4px;
+}
+
+#content.is-scrolling,
+#content:hover {
+  scrollbar-color: #d15200 transparent;
+}
+
+#content.is-scrolling::-webkit-scrollbar-thumb,
+#content:hover::-webkit-scrollbar-thumb {
+  background: #d15200;
+}
+
+#content::-webkit-scrollbar-thumb:hover {
+  background: #d15200;
+}
+
+/* --- Сцена страницы 3 --- */
+#scene {
+  background-color: #d15200;
+  user-select: none;
+}
+
+#border-braid {
+  left: 0;
+  top: 0;
+  width: 36px;
+  height: 100%;
+  object-fit: cover;
+  z-index: 9;
+  pointer-events: none;
+}
+
+#meander-bottom {
+  left: 36px;
+  bottom: 0;
+  width: calc(100% - 36px);
+  z-index: 8;
+  pointer-events: none;
+}
+
+#bg-black {
+  left: 36px;
+  top: 0;
+  width: calc(100% - 36px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+#women-figures {
+  left: 36px;
+  top: 0%;
+  width: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Поверженные головы сыновей внизу слева */
+#head-1 {
+  left: 21.5%;
+  top: 43.5%;
+  width: 4.5%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+#head-2 {
+  left: 43.3%;
+  top: 31.7%;
+  width: 4.7%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* --- 5 групп разбросанных хитонов --- */
+/* --- Общие свойства для отдельного хитона --- */
+.chiton {
+  position: absolute;
+  height: auto;
+  z-index: 7;
+  cursor: pointer;
+  transform-origin: center center;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              filter 0.25s ease, 
+              opacity 0.35s ease;
+}
+
+.chiton:hover {
+  transform: scale(1.15) translateY(-3px);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.85));
+}
+
+/* Исчезновение найденного хитона */
+.chiton.collected {
+  opacity: 0;
+  transform: scale(0.4) translateY(-20px);
+  pointer-events: none;
+}
+
+/* --- Индивидуальные позиции каждого из 10 хитонов --- */
+
+/* 1. Верхний правый угол (одиночный улетающий лоскут) */
+#chiton-1 {
+  left: 7.5%;
+  top: 42.5%;
+  width: 32.8%;
+}
+
+/* 2. Под ним левее (сложенный хитон) */
+#chiton-2 {
+  left: 20.2%;
+  top: 28.5%;
+  width: 26.5%;
+}
+
+/* 3. Верхняя центральная диагональ (маленький лоскут) */
+#chiton-3 {
+  left: 52.5%;
+  top: 55.5%;
+  width: 45.2%;
+}
+
+/* 4. Правый край (одиночный парящий рукав) */
+#chiton-4 {
+  left: 74.2%;
+  top: 37.2%;
+  width: 16.4%;
+}
+
+/* 5. Крайний правый хитон (рубаха у правого края сцены) */
+#chiton-5 {
+  left: 20.2%;
+  top: 67.5%;
+  width: 30.5%;
+}
+
+/* Счетчик хитонов */
+#chiton-counter {
+  position: absolute;
+  bottom: 11.5%;
+  right: 24px;
+  top: auto;
+  background: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  z-index: 10;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#chiton-counter.done {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+/* Кнопка «СЛЕДУЮЩИЙ МИФ» */
+#undertext {
+  width: 45%;
+  margin-top: 32px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  cursor: pointer;
+}
+
+#undertext.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}

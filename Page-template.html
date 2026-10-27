@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>НАЗВАНИЕ КНИГИ — страница N</title>
+  <link rel="icon" type="image/png" href="./assets/img/icon.png">
+
+  <!-- Подключить N.css и pageN.js под номером страницы -->
+  <link rel="stylesheet" href="./assets/main.css">
+  <link rel="stylesheet" href="./assets/N.css">
+  <link rel="stylesheet" href="./assets/ui.css">
+
+  <script>
+    window.addEventListener('load', function () {
+      var loader = document.getElementById('loader');
+      if (loader) loader.remove();
+    });
+  </script>
+
+  <script src="./postMessageHandler.js"></script>
+  <script src="./assets/ui.js"></script>
+</head>
+
+<body>
+
+  <div id="loader">
+    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+  </div>
+
+  <main>
+
+    <!-- ШАГ 1: перенести текст страницы (один <p> = один абзац) -->
+    <section id="content">
+      <div id="textbox">
+        <p>Текст страницы…</p>
+        <!-- <img id="undertext" src="./assets/img/page-N/....png" alt=""> -->
+      </div>
+    </section>
+
+    <!-- ШАГ 2: сверстать сцену. Позиции — в N.css, логика — в pageN.js -->
+    <div id="scene">
+      <div id="overflow-wrapper">
+        <!-- <img class="scene__img" id="layer-1" src="./assets/img/page-N/....png" alt=""> -->
+      </div>
+    </div>
+
+  </main>
+
+  <script src="./assets/pageN.js"></script>
+</body>
+
+</html>

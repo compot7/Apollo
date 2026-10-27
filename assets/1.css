@@ -1,0 +1,234 @@
+/* ==========================================================================
+   1.css — сцена страницы 1.
+   ТОЛЬКО позиции/размеры/z-index слоёв сцены (в % от размеров #scene,
+   считаются по макету Figma). Базовые стили — .scene__img в main.css.
+   ========================================================================== */
+
+/* --- Текстовая колонка: позиционирование и фон --- */
+#content {
+  position: relative;
+  /* Терракотовая подложка строго под левой полосой шириной 36px */
+  background: linear-gradient(
+    to right,
+    #d15200 0,
+    #d15200 36px,
+    #ffffff 36px,
+    #ffffff 100%
+  );
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.4s ease;
+}
+
+/* Статичная левая косичка */
+#border-braid-left {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 36px;
+  height: 100%;
+  object-fit: cover;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Отступы текстового блока, чтобы текст начинался строго после левой косички */
+#textbox {
+  padding-left: 56px;
+  padding-right: 32px;
+}
+
+/* --- Скроллбар --- */
+#content::-webkit-scrollbar {
+  width: 6px;
+}
+
+#content::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+#content::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 4px;
+}
+
+#content.is-scrolling,
+#content:hover {
+  scrollbar-color: #d15200 transparent;
+}
+
+#content.is-scrolling::-webkit-scrollbar-thumb,
+#content:hover::-webkit-scrollbar-thumb {
+  background: #d15200;
+}
+
+#content::-webkit-scrollbar-thumb:hover {
+  background: #d15200;
+}
+
+/* --- Сцена --- */
+#scene {
+  background-color: #d15200;
+  cursor: crosshair;
+}
+
+/* Правая косичка на стыке текста и сцены */
+#border-braid {
+  left: 0;
+  top: 0;
+  width: 36px;
+  height: 100%;
+  object-fit: cover;
+  z-index: 9;
+  pointer-events: none;
+}
+
+/* Нижний греческий меандр */
+#meander-bottom {
+  left: 36px;
+  bottom: 0;
+  width: calc(100% - 36px);
+  z-index: 8;
+  pointer-events: none;
+}
+
+/* Змей Пифон */
+#python {
+  left: 36px;
+  top: 0;
+  width: 60.5%;
+  z-index: 2;
+  cursor: crosshair;
+  transform-origin: top left;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+#python.aiming {
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.35));
+}
+
+#python.hit {
+  animation: pythonShake 0.45s ease-in-out;
+}
+
+/* --- Составные части Аполлона --- */
+
+/* Ноги */
+#apollo-legs {
+  left: 65.5%;
+  top: 65.99%;
+  width: 29.8%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Торс с руками */
+#apollo-torso {
+  left: 72.0%;
+  top: 46.8%;
+  width: 26.5%;
+  z-index: 4;
+  pointer-events: none;
+  transform-origin: 65% 92%;
+  transition: transform 0.12s ease-out;
+}
+
+/* Голова */
+#apollo-head {
+  left: 85.3%;
+  top: 48.5%;
+  width: 5.5%;
+  z-index: 6;
+  pointer-events: none;
+  transform-origin: 60% 85%;
+  transition: transform 0.12s ease-out;
+}
+
+/* Лук */
+#apollo-bow {
+  left: 69.2%;
+  top: 36.0%;
+  width: 18.2%;
+  z-index: 6;
+  pointer-events: none;
+  transform-origin: 20% 45%;
+  transition: transform 0.12s ease-out;
+}
+
+/* Чёрная стрела на тетиве */
+#apollo-arrow-black {
+  left: 70.8%;
+  top: 40.8%;
+  width: 13.5%;
+  z-index: 7;
+  pointer-events: none;
+  transform-origin: 100% 100%;
+  transition: transform 0.2s ease-out, opacity 0.15s ease-out;
+}
+
+#apollo-arrow-black.drawn {
+  transform: translate(12%, 9%);
+}
+
+#apollo-arrow-black.shot {
+  transform: translate(-160%, -120%);
+  opacity: 0;
+}
+
+/* --- Белые стрелы --- */
+.arrow-white {
+  z-index: 3;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(110px, 80px) scale(0.65);
+  transition: opacity 0.15s ease-out, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#arrow-white-1 {
+  left: 55.2%;
+  top: 11.2%;
+  width: 7.4%;
+}
+
+#arrow-white-2 {
+  left: 40.0%;
+  top: 21.8%;
+  width: 17.5%;
+}
+
+#arrow-white-3 {
+  left: 27.0%;
+  top: 33.2%;
+  width: 16.0%;
+}
+
+.arrow-white.shot {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* --- Кнопка «СЛЕДУЮЩИЙ МИФ» --- */
+#undertext {
+  width: 45%;
+  margin-top: 32px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  cursor: pointer;
+}
+
+#undertext.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+@keyframes pythonShake {
+  0%, 100% { transform: translate(0, 0); }
+  20%      { transform: translate(-8px, 4px) rotate(-1.5deg); }
+  40%      { transform: translate(6px, -4px) rotate(1deg); }
+  60%      { transform: translate(-5px, 2px) rotate(-0.8deg); }
+  80%      { transform: translate(3px, -1px) rotate(0.5deg); }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>МИФЫ АППОЛОНА</title>
+  <link rel="icon" type="image/png" href="./assets/img/icon.png">
+
+  <!-- Стили проекта -->
+  <link rel="stylesheet" href="./assets/main.css">
+  <link rel="stylesheet" href="./assets/title.css">
+  <link rel="stylesheet" href="./assets/ui.css">
+
+  <script>
+    window.addEventListener('load', function () {
+      var loader = document.getElementById('loader');
+      if (loader) loader.remove();
+    });
+  </script>
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function (m, e, t, r, i, k, a) {
+      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+      m[i].l = 1 * new Date();
+      for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+      k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=104276774', 'ym');
+    ym(104276774, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", accurateTrackBounce: true, trackLinks: true });
+  </script>
+
+  <script src="./postMessageHandler.js"></script>
+  <script src="./assets/ui.js"></script>
+</head>
+
+<body>
+
+  <div id="loader">
+    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+  </div>
+
+  <main id="title-main">
+
+    <!-- Полноэкранная сцена обложки -->
+    <div id="title-scene">
+      <div id="overflow-wrapper">
+        <!-- Белое дерево слева -->
+        <img class="title__img" id="tree" src="./assets/img/page-0/tree.svg" alt="Дерево">
+
+        <!-- Центральный блок: Заголовок и титры -->
+        <div id="title-content">
+          <h1 class="main-heading">МИФЫ<br>АППОЛОНА</h1>
+
+          <div class="credits">
+            <p class="credit-row"><span class="role">Редактор:</span> ???????????????</p>
+            <p class="credit-row"><span class="role">Иллюстратор:</span> Софья Ипатова</p>
+            <div class="developers-block">
+              <span class="role">Разработчики:</span>
+              <span class="dev-names">Светозар Крылов&nbsp;&nbsp;???????????????</span>
+              <div class="dev-placeholders">
+                <span>???????????????</span>
+                <span>???????????????</span>
+                <span>???????????????</span>
+                <span>???????????????</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Фигуры юноши и Аполлона с факелом справа -->
+        <img class="title__img" id="figures" src="./assets/img/page-0/figures.svg" alt="Аполлон и юноша">
+
+        <!-- Нижний греческий орнамент -->
+        <img class="title__img" id="meander-full" src="./assets/img/page-0/meander-bottom.svg" alt="Меандр">
+      </div>
+    </div>
+
+  </main>
+
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/104276774" style="position:absolute; left:-9999px;" alt=""></div>
+  </noscript>
+</body>
+
+</html>

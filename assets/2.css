@@ -1,0 +1,298 @@
+/* ==========================================================================
+   2.css — сцена страницы 2 (Корабль в шторме, дельфин и видения).
+   ========================================================================== */
+
+/* --- Текстовая колонка --- */
+#content {
+  position: relative;
+  /* Терракотовая подложка строго под левой полосой шириной 36px */
+  background: linear-gradient(
+    to right,
+    #d15200 0,
+    #d15200 36px,
+    #ffffff 36px,
+    #ffffff 100%
+  );
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.4s ease;
+}
+
+/* Статичная левая косичка */
+#border-braid-left {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 36px;
+  height: 100%;
+  object-fit: cover;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Отступ текстового блока, чтобы буквы не наезжали на косичку */
+#textbox {
+  padding-left: 56px;
+  padding-right: 32px;
+}
+
+/* Правая косичка (для сверки: те же 36px ширины) */
+#border-braid {
+  left: 0;
+  top: 0;
+  width: 36px;
+  height: 100%;
+  object-fit: cover;
+  z-index: 9;
+  pointer-events: none;
+}
+
+/* Прозрачный скроллбар с авто-появлением */
+#content::-webkit-scrollbar {
+  width: 6px;
+}
+
+#content::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+#content::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 4px;
+}
+
+#content.is-scrolling,
+#content:hover {
+  scrollbar-color: #d15200 transparent;
+}
+
+#content.is-scrolling::-webkit-scrollbar-thumb,
+#content:hover::-webkit-scrollbar-thumb {
+  background: #d15200;
+}
+
+#content::-webkit-scrollbar-thumb:hover {
+  background: #d15200;
+}
+
+/* --- Сцена 2 --- */
+#scene {
+  background-color: #d15200;
+  user-select: none;
+  overflow: hidden;
+}
+
+#border-braid {
+  left: 0;
+  top: 0;
+  width: 36px;
+  height: 100%;
+  object-fit: cover;
+  z-index: 9;
+  pointer-events: none;
+}
+
+#meander-bottom {
+  left: 36px;
+  bottom: 0;
+  width: calc(100% - 36px);
+  z-index: 8;
+  pointer-events: none;
+}
+
+/* 1. Грозовые тучи */
+#clouds {
+  left: 36px;
+  top: 0;
+  width: 96%;
+  z-index: 2;
+  transition: transform 0.6s ease, filter 1s ease;
+}
+
+/* 2. Дельфин */
+#dolphin {
+  left: 10%;
+  top: 31%;
+  width: 14%;
+  z-index: 3;
+  transform-origin: center center;
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* 3. Группа корабля */
+#ship-group {
+  position: absolute;
+  left: 20%;
+  top: 15%;
+  width: 78%;
+  height: 75%;
+  z-index: 5;
+  transform-origin: 55% 82%; /* Центр качания ладьи */
+  will-change: transform;
+}
+
+#ship-sail {
+  left: 40%;
+  top: 23%;
+  width: 54%;
+  z-index: 1;
+}
+
+#ship-crew {
+  left: 32%;
+  top: 74.5%;
+  width: 44%;
+  z-index: 2;
+}
+
+#ship-hull {
+  left: 10%;
+  top: 66%;
+  width: 78%;
+  z-index: 3;
+}
+
+/* 4. Волны шторма */
+#waves-back {
+  width: 100%;
+  z-index: 4;
+  animation: waveSwayBack 3.5s ease-in-out infinite alternate;
+}
+
+#waves-front {
+  width: 100%;
+  z-index: 7;
+  animation: waveSwayFront 2.6s ease-in-out infinite alternate;
+}
+
+@keyframes waveSwayBack {
+  0%   { transform: scaleX(1.08) scaleY(1) translateX(0); }
+  100% { transform: scaleX(1.08) scaleY(1.08) translateX(-15px); }
+}
+
+@keyframes waveSwayFront {
+  0%   { transform: scaleX(1.08) scaleY(1.05) translateX(0); }
+  100% { transform: scaleX(1.08) scaleY(0.95) translateX(-20px); }
+}
+
+#waves-container {
+  position: absolute;
+  left: 36px;
+  bottom: 0;
+  width: calc(100% - 36px);
+  height: 25%;
+  overflow: hidden;
+  z-index: 4;
+  pointer-events: none;
+}
+
+#waves-container #waves-back,
+#waves-container #waves-front {
+  left: 0;
+  position: absolute;
+}
+#waves-container #waves-back {
+  bottom: 48%;
+  z-index: 1;
+}
+#waves-container #waves-front {
+  bottom: 40%;
+  z-index: 2;
+}
+
+/* --- Подсказка балансировки --- */
+#balance-hint {
+  position: absolute;
+  bottom: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-family: inherit;
+  z-index: 10;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+#balance-hint.hidden {
+  opacity: 0;
+}
+
+/* --- Окно выбора двух видений --- */
+#visions-modal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 12;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+  backdrop-filter: blur(3px);
+}
+
+#visions-modal.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.vision-card {
+  width: 38%;
+  height: 48%;
+  background: #111;
+  border: 2px solid #d15200;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.vision-card:hover {
+  transform: translateY(-8px) scale(1.04);
+  background: #222;
+  box-shadow: 0 8px 24px rgba(209, 82, 0, 0.6);
+  border-color: #ff7722;
+}
+
+.vision-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #ff9944;
+}
+
+.vision-desc {
+  font-size: 13px;
+  line-height: 1.35;
+  color: #ccc;
+}
+
+/* --- Кнопка перехода под текстом --- */
+#undertext {
+  width: 45%;
+  margin-top: 32px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  cursor: pointer;
+}
+
+#undertext.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}

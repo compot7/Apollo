@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>МИФЫ ДРЕВНЕЙ ГРЕЦИИ — Аполлон и музы</title>
+  <link rel="icon" type="image/png" href="./assets/img/icon.png">
+
+  <!-- Стили: main.css (общее), 4.css (сцена кифары), ui.css (интерфейс ридера) -->
+  <link rel="stylesheet" href="./assets/main.css">
+  <link rel="stylesheet" href="./assets/4.css">
+  <link rel="stylesheet" href="./assets/ui.css">
+
+  <!-- Снятие лоадера сразу после загрузки -->
+  <script>
+    window.addEventListener('load', function () {
+      var loader = document.getElementById('loader');
+      if (loader) loader.remove();
+    });
+  </script>
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function (m, e, t, r, i, k, a) {
+      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+      m[i].l = 1 * new Date();
+      for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+      k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=104276774', 'ym');
+    ym(104276774, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", accurateTrackBounce: true, trackLinks: true });
+  </script>
+  <!-- /Yandex.Metrika counter -->
+
+  <script src="./postMessageHandler.js"></script>
+  <script src="./assets/ui.js"></script>
+</head>
+
+<body>
+
+  <!-- Прелоадер -->
+  <div id="loader">
+    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+  </div>
+
+  <main>
+
+    <!-- ================================================================
+         ТЕКСТ СТРАНИЦЫ 4
+         ================================================================ -->
+    <section id="content">
+      <!-- Статичная левая кайма -->
+      <img id="border-braid-left" src="./assets/img/page-4/border-braid.svg" alt="Кайма слева">
+      <img id="border-braid-right" src="./assets/img/page-4/border-braid.svg" alt="Кайма справа">
+
+      <div id="textbox">
+        <p>
+          Высоко над миром смертных, на залитой вечным солнцем вершине Парнаса, находилась основа искусств. Аполлон, «Предводитель муз», был здесь не господином, а первым среди равных, задающим тон. Девять муз, дочерей Памяти (Мнемосины) и мыслящего разума (Зевса), были живыми воплощениями различных форм познания и творения. И Аполлон со своей кифарой был тем стержнем, который придавал их стихийному вдохновению форму и гармонию. Когда он касался струн, рождался чистый, математически выверенный звук — фундаментальный тон мироздания. И под этот тон каждая муза начинала своё дело. Клио, со свитком в руках, отбирала из потока событий те, что достойны памяти, создавая ткань истории. Эвтерпа, с флейтой, придавала этой ткани мелодию и ритм. Терпсихора превращала абстрактный ритм в пластику танца. Урания, вращая небесный глобус, искала в движении звёзд законы, управляющие всем сущим. Это был не пир и не праздник — это была священная работа по упорядочиванию хаоса. Аполлон следил, чтобы восторг не переходил в неистовство, чтобы лирика не вырождалась в крик, чтобы танец оставался осмысленным жестом. Парнас под его началом стал символом того, что высшая культура — это всегда союз свободного вдохновения и дисциплинирующего, просветляющего разума.Но свет Аполлона был не только источником гармонии.
+        </p>
+        <p>
+          Иногда он пробуждал в смертных нечто опасное.
+        </p>
+        <p>
+          Одни, услышав божественную музыку, начинали верить, что способны превзойти самих богов.
+        </p>
+        <p>
+          Другие же, однажды взглянув дальше дозволенного, уже не могли снова жить среди обычных людей.
+        </p>
+        <p>
+          Музы знали это и потому порой умолкали, когда кифара Аполлона звучала особенно ясно.
+        </p>
+        <p>
+          В такие мгновения над Парнасом словно возникали тени ещё не рассказанных историй.
+        </p>
+        <p>
+          Где-то среди диких фригийских лесов ветер нёс резкий звук тростниковой свирели — вызывающий, почти насмешливый.
+        </p>
+        <p>
+          А далеко на востоке, у стен великого города, чьи башни ещё не тронул огонь, одинокая девушка всматривалась в будущее с ужасом, который никто не мог разделить.
+        </p>
+        <p>
+          Аполлон ничего не сказал.
+        </p>
+        <p>
+          Он лишь коснулся струн.
+        </p>
+        <p>
+          И мир разделился на две дороги.
+        </p>
+
+        <!-- Кнопка перехода (появляется после завершения игры) -->
+        <img id="undertext" src="./assets/img/page-4/btn-next-myth.svg" alt="Следующий миф">
+      </div>
+    </section>
+
+    <!-- ================================================================
+         СЦЕНА 4 — Кифара Аполлона, руки и интерактивные струны
+         ================================================================ -->
+    <div id="scene">
+      <div id="overflow-wrapper">
+
+        <!-- 1. Аполлон и основа кифары -->
+        <img class="scene__img" id="apollo-body" src="./assets/img/page-4/apollo-body.svg" alt="Аполлон с кифарой">
+
+        <!-- 2. Визуальные струны кифары (лежат ПОД руками) -->
+        <svg id="kithara-strings-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+          <defs>
+            <filter id="stringGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#ffd54f" flood-opacity="0.95" />
+            </filter>
+          </defs>
+
+          <line class="string-line" id="str-line-1" x1="290" y1="55"  x2="-80" y2="550" />
+          <line class="string-line" id="str-line-2" x1="325" y1="75"  x2="-45" y2="570" />
+          <line class="string-line" id="str-line-3" x1="360" y1="95"  x2="-10" y2="590" />
+          <line class="string-line" id="str-line-4" x1="395" y1="115" x2="25"  y2="610" />
+          <line class="string-line" id="str-line-5" x1="430" y1="135" x2="60"  y2="630" />
+        </svg>
+
+        <!-- 3. Руки и пальцы поверх визуальных струн -->
+        <div id="apollo-hands-group">
+          <!-- Левая рука (сверху) -->
+          <img class="scene__img" id="arm-left-palm"     src="./assets/img/page-4/arm-left-palm.svg"     alt="Ладонь левой руки">
+          <img class="scene__img" id="hand-left-fingers" src="./assets/img/page-4/hand-left-fingers.svg" alt="Пальцы левой руки">
+
+          <!-- Правая рука (снизу): рука + фаланга 1 + кончики фаланги 2 -->
+          <img class="scene__img" id="arm-right"          src="./assets/img/page-4/arm-right.svg"          alt="Правая рука">
+          <div id="right-fingers-group">
+            <img class="scene__img" id="hand-right-fingers" src="./assets/img/page-4/hand-right-fingers.svg" alt="Пальцы правой руки">
+            <img class="scene__img" id="hand-right-tips"    src="./assets/img/page-4/hand-right-tips.svg"    alt="Кончики пальцев правой руки">
+          </div>
+        </div>
+
+        <!-- 4. Слой хитбоксов -->
+        <svg id="kithara-hitboxes-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+          <g class="string-group" data-index="1">
+            <line class="string-hitbox" x1="290" y1="55" x2="-80" y2="550" />
+          </g>
+          <g class="string-group" data-index="2">
+            <line class="string-hitbox" x1="325" y1="75" x2="-45" y2="570" />
+          </g>
+          <g class="string-group" data-index="3">
+            <line class="string-hitbox" x1="360" y1="95" x2="-10" y2="590" />
+          </g>
+          <g class="string-group" data-index="4">
+            <line class="string-hitbox" x1="395" y1="115" x2="25" y2="610" />
+          </g>
+          <g class="string-group" data-index="5">
+            <line class="string-hitbox" x1="430" y1="135" x2="60" y2="630" />
+          </g>
+        </svg>
+
+        <!-- 5. Нижний меандр -->
+        <img class="scene__img" id="meander-bottom" src="./assets/img/page-4/meander-bottom.svg" alt="Меандр">
+
+        <!-- 6. Статус/подсказка игры -->
+        <div id="melody-hint">Коснитесь струн в ладу гармонии (5 звуков)</div>
+
+        <!-- 7. Модальное окно выбора дорог (экран 5 / экран 6) -->
+        <div id="roads-modal">
+          <div class="road-card" id="road-screen5" data-target="5">
+            <span class="road-title">Песнь Марсия</span>
+            <span class="road-desc">Дерзкий вызов свирели во фригийских лесах</span>
+          </div>
+          <div class="road-card" id="road-screen6" data-target="6">
+            <span class="road-title">Пророчество Кассандры</span>
+            <span class="road-desc">Трагедия башен Трои и дар провидения</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Интерактив страницы 4 -->
+  <script src="./assets/page4.js"></script>
+
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/104276774" style="position:absolute; left:-9999px;" alt=""></div>
+  </noscript>
+</body>
+
+</html>

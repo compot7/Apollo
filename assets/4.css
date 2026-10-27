@@ -1,0 +1,362 @@
+/* ==========================================================================
+   4.css — сцена страницы 4 (Кифара Аполлона, руки и векторные струны).
+   ========================================================================== */
+
+/* --- Текстовая колонка (аппаратно ускоренный скролл 60/120 FPS) --- */
+#content {
+  position: relative;
+  /* Терракотовая подложка строго под левой полосой шириной 36px */
+  background: linear-gradient(
+    to right,
+    #d15200 0,
+    #d15200 36px,
+    #ffffff 36px,
+    #ffffff 100%
+  );
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.4s ease;
+}
+
+/* --- Левая косичка --- */
+#border-braid-left {
+  position: fixed; /* Намертво приклеена к окну браузера */
+  top: 0;
+  left: 0;         /* Левый край экрана */
+  width: 36px;
+  height: 100vh;
+  background-color: #d15200;
+  object-fit: cover;
+  z-index: 10;
+  pointer-events: none;
+  transform: translateZ(0); /* Аппаратное ускорение */
+}
+
+/* --- Правая косичка --- */
+#border-braid-right {
+  position: fixed; /* Намертво приклеена к окну браузера */
+  top: 0;
+  left: 42.5%; /* Прижимаем к границе текстового блока (если он 50vw) */
+  width: 36px;
+  height: 100vh;
+  background-color: #d15200;
+  object-fit: cover;
+  z-index: 10;
+  pointer-events: none;
+  transform: translateZ(0);
+}
+
+/* Отступы текстового блока с учетом обеих косичек */
+#textbox {
+  position: relative;
+  padding-left: 56px;
+  padding-right: 56px; 
+  z-index: 2;
+}
+
+/* Прозрачный скроллбар с авто-появлением */
+#content::-webkit-scrollbar {
+  width: 6px;
+}
+
+#content::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+#content::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 4px;
+}
+
+#content.is-scrolling,
+#content:hover {
+  scrollbar-color: #d15200 transparent;
+}
+
+#content.is-scrolling::-webkit-scrollbar-thumb,
+#content:hover::-webkit-scrollbar-thumb {
+  background: #d15200;
+}
+
+#content::-webkit-scrollbar-thumb:hover {
+  background: #d15200;
+}
+
+/* --- Сцена 4 --- */
+#scene {
+  background-color: #d15200;
+  user-select: none;
+}
+
+/* Нижний греческий меандр */
+#meander-bottom {
+  left: 36px;
+  bottom: 0;
+  width: calc(100% - 36px);
+  z-index: 8;
+  pointer-events: none;
+}
+
+/* 1. Торс Аполлона и каркас кифары */
+#apollo-body {
+  left: 36px;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* 2. Слой видимых струн под руками */
+#kithara-strings-svg {
+  position: absolute;
+  left: 49%;
+  top: 0;
+  width: calc(100% - 36px);
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+  overflow: visible !important;
+}
+
+/* 4. Слой хитбоксов над руками */
+#kithara-hitboxes-svg {
+  position: absolute;
+  left: 49%;
+  top: 0;
+  width: calc(100% - 36px);
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+  overflow: visible !important;
+}
+
+/* Линия хитбокса */
+.string-hitbox {
+  stroke: transparent;
+  stroke-width: 44px; /* Широкая зона попадания */
+  stroke-linecap: round;
+  cursor: pointer;
+  pointer-events: stroke; /* Перехватывает наведение и клики */
+}
+
+/* Видимая белая струна по умолчанию */
+.string-line {
+  stroke: #ffffff;
+  stroke-width: 3.5px;
+  stroke-linecap: round;
+  pointer-events: none;
+  transition: stroke 0.15s ease, stroke-width 0.15s ease;
+}
+
+/* Яркая золотая подсветка при наведении */
+.string-line.hovered {
+  stroke: #ffe066 !important;
+  stroke-width: 8px !important;
+  filter: url(#stringGlow) !important;
+}
+
+/* Вибрация и яркое свечение струны при щипке */
+.string-line.pluck {
+  stroke: #ff9800 !important;
+  stroke-width: 9px !important;
+  filter: url(#stringGlow) !important;
+  animation: stringVibrate 0.45s ease-out;
+}
+
+@keyframes stringVibrate {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-5px, 2px); }
+  50%  { transform: translate(5px, -2px); }
+  75%  { transform: translate(-2px, 1px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* --- 3. Руки и пальцы поверх видимых струн --- */
+
+/* Левая рука (сверху кифары) */
+#arm-left-palm {
+  left: 30%;
+  top: 22%;
+  width: 40%;
+  z-index: 1;
+}
+
+#hand-left-fingers {
+  left: 52.3%;
+  top: 16.7%;
+  width: 27%;
+  z-index: 6;
+}
+
+/* Правая рука (снизу у струн) */
+#arm-right {
+  left: 0%;
+  top: 52.5%;
+  width: 47%;
+  z-index: 5;
+}
+
+/* Группа пальцев правой руки (фаланги + кончики) */
+#right-fingers-group {
+  position: absolute;
+  left: 34%;
+  top: 47%;
+  width: 22%;
+  height: 25%;
+  z-index: 6;
+  transform-origin: 30% 20%;
+  transition: transform 0.12s ease-out;
+}
+
+#hand-right-fingers {
+  left: 30%;
+  top: 22%;
+  width: 77%;
+}
+
+#hand-right-tips {
+  left: 0%;
+  top: 21.5%;
+  width: 89%;
+}
+
+/* Анимация совместного щипка струны правой кистью */
+#right-fingers-group.pluck-motion {
+  transform: scale(0.96) translate(-4px, 3px) rotate(-5deg);
+}
+
+/* --- 4. Слой хитбоксов — ПОДНЯТ НАД РУКАМИ И ВСЕМИ ИЗОБРАЖЕНИЯМИ --- */
+#kithara-hitboxes-svg {
+  position: absolute;
+  left: 49%;
+  top: 0;
+  width: calc(100% - 36px);
+  height: 100%;
+  z-index: 10;           /* Выше всех рук и картинок */
+  pointer-events: none;  /* Сам SVG-контейнер прозрачен для кликов */
+  overflow: visible;
+}
+
+/* Невидимый широкий хитбокс для удобного нажатия */
+.string-hitbox {
+  stroke: transparent;
+  stroke-width: 38px;
+  stroke-linecap: round;
+  cursor: pointer;
+  pointer-events: stroke; /* Перехватывает клики и касания поверх всех картинок */
+}
+
+/* Вздрагивание сцены при ошибке */
+#scene.error-shake {
+  animation: sceneDissonance 0.45s ease-in-out;
+}
+
+@keyframes sceneDissonance {
+  0%, 100% { transform: translate(0, 0); }
+  20%      { transform: translate(-6px, 2px); }
+  40%      { transform: translate(6px, -2px); }
+  60%      { transform: translate(-4px, 1px); }
+  80%      { transform: translate(3px, -1px); }
+}
+
+/* Плашка статуса и подсказки */
+#melody-hint {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 12;
+  pointer-events: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+#melody-hint.error {
+  background: rgba(180, 20, 0, 0.85);
+  color: #ffcccc;
+}
+
+#melody-hint.success {
+  background: rgba(20, 140, 20, 0.85);
+  color: #ccffcc;
+}
+
+/* Модальное окно двух дорог */
+#roads-modal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: rgba(0, 0, 0, 0.68);
+  z-index: 15;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+  backdrop-filter: blur(3px);
+}
+
+#roads-modal.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.road-card {
+  width: 38%;
+  height: 48%;
+  background: #111;
+  border: 2px solid #d15200;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.road-card:hover {
+  transform: translateY(-8px) scale(1.04);
+  background: #222;
+  box-shadow: 0 8px 24px rgba(209, 82, 0, 0.6);
+  border-color: #ff7722;
+}
+
+.road-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #ff9944;
+}
+
+.road-desc {
+  font-size: 13px;
+  line-height: 1.35;
+  color: #ccc;
+}
+
+/* Кнопка «СЛЕДУЮЩИЙ МИФ» */
+#undertext {
+  width: 45%;
+  margin-top: 32px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  cursor: pointer;
+}
+
+#undertext.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}

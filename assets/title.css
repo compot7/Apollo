@@ -1,0 +1,122 @@
+/* ==========================================================================
+   title.css — стили титульного экрана (обложки) 16:9 без интерактива.
+   ========================================================================== */
+
+#title-main {
+  width: 100vw;
+  height: 100%; /* Пропорция 16:9 */
+  max-height: 100vh;
+  max-width: 177.78vh;
+  margin: 0 auto;
+  position: relative;
+  background-color: #d15200; /* Терракотовый фон */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#title-scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.title__img {
+  position: absolute;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+/* 1. Белое стилизованное дерево слева */
+#tree {
+  left: 0;
+  top: 0;
+  height: 87.5%; /* Доходит ровно до меандра */
+  width: auto;
+  z-index: 2;
+}
+
+/* 2. Фигуры справа: юноша и Аполлон с факелом */
+#figures {
+  right: 2.8%;
+  top: 9.5%;
+  height: 78%; /* Стоят на полосе меандра */
+  width: auto;
+  z-index: 2;
+}
+
+/* 3. Нижний меандр на всю ширину страницы */
+#meander-full {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 12.5%;
+  z-index: 5;
+  object-fit: cover;
+}
+
+/* 4. Блок заголовка и титров по центру */
+#title-content {
+  position: absolute;
+  left: 23%;
+  top: 25%;
+  width: 36%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 3;
+  color: #000000;
+  font-family: "PT Astra Sans", "Montserrat Alternates", Arial, sans-serif;
+}
+
+/* Заголовок МИФЫ АППОЛОНА */
+.main-heading {
+  margin: 0 0 24px 0;
+  font-size: calc(24px + 28 * ((100vw - 767px) / (1920 - 767)));
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Блок титров */
+.credits {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-size: calc(11px + 4 * ((100vw - 767px) / (1920 - 767)));
+  line-height: 1.4;
+}
+
+.credit-row {
+  margin: 0;
+}
+
+.role {
+  font-weight: 700;
+}
+
+.developers-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.dev-names {
+  margin-top: 2px;
+}
+
+.dev-placeholders {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 4px;
+  max-width: 320px;
+}
